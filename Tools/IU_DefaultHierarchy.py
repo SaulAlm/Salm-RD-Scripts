@@ -7,4 +7,3 @@ def parentFxGrp():
         cmds.parent('FX_Grp', 'Render_Grp')
         
 parentFxGrp()
-

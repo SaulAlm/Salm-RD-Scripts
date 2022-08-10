@@ -1,6 +1,8 @@
 # This script will check and zero all defined Dp_Ar atributes and transformations. 
 # For Dp_Ar_control will copy originalRotate values to Rotate and zero some extra.
 
+# version 1.00 - 2022.08.10
+
 """ Thanks for collaborators:
     | Danilo Pinheiro |
     | André Almeida   |

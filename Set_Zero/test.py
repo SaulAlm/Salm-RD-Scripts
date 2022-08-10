@@ -26,8 +26,7 @@ def checkToPublish():
     def callSelectAllControls():
         # Execute dpSelectAllControls fuction
         dpSelectAllControls.SelectAllControls(autoRigUI, autoRigUI.langDic, autoRigUI.langName)
-        # autoRigUI.initExtraModule("dpSelectAllControls", "Extras")
-        #zeroAllTransform()
+
 
     # Function to Zero controls
     def zeroAllTransform():
@@ -84,29 +83,27 @@ def checkToPublish():
                 print(a)
                 newAttr = cmds.addAttr(longName="default"+a.title())
                 print(newAttr)
-        return
     
     # This function will zero all extra atributes in DpControls
     def zeroExtraAtributes():
+        controlsList = cmds.ls(sl=True)
         for ctrl in controlsList:
-            print(ctrl)
-            for attrZero in setZeroList and setOneList:
-                try:
-                    cmds.setAttr(ctrl+'.'+attrZero,0)
-                except Exception as e:
-                    print(e)
-            for attrOne in setOneList:
-                try:
-                    cmds.setAttr(ctrl+'.'+attrOne,1)
-                except Exception as e:
-                    print(e)
-
+            userDefAttrList = cmds.listAttr(ctrl, userDefined=True)
+            for attr in userDefAttrList:
+                if attr in setZeroList:
+                    try:
+                        cmds.setAttr(ctrl+'.'+attr,0)
+                    except Exception as e:
+                        print(e)
+                elif attr in setOneList:
+                    try:
+                        cmds.setAttr(ctrl+'.'+attr,1)
+                    except Exception as e:
+                        print(e)
+                    
     
     def hideDataGroup():
-        cmds.ls('Data_Grp')
-        cmds.setAttr(dataGrp[0]+'.visibility', 0)
-        print('Hide Data_Grp')
-
+        cmds.setAttr('Data_Grp.visibility', 0)
 
 
     def mainFunction():
@@ -130,8 +127,3 @@ def checkToPublish():
     mainFunction()
 
 checkToPublish()
-
-# TO DO
-
-# -> Função para zerar todos os atributos
-# -> Checar se existe Ctrl_Lyr e aplicar todos os controles nele.

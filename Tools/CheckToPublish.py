@@ -86,9 +86,9 @@ def checkToPublish():
     
     # This function will zero all extra atributes in DpControls
     def zeroExtraAtributes():
-        controlsList = callSelectAllControls()
-        for ctrl in str(controlsList):
-            print(ctrl)
+        callSelectAllControls()
+        controlsList = cmds.ls(sl=True)
+        for ctrl in controlsList:
             for attrZero in setZeroList:
                 try:
                     cmds.setAttr(ctrl+'.'+attrZero,0)
@@ -102,9 +102,7 @@ def checkToPublish():
 
     
     def hideDataGroup():
-        cmds.ls('Data_Grp')
-        cmds.setAttr(dataGrp[0]+'.visibility', 0)
-        print('Hide Data_Grp')
+        cmds.setAttr('Data_Grp.visibility', 0)
 
 
     def mainFunction():
@@ -131,5 +129,4 @@ checkToPublish()
 
 # TO DO
 
-# -> Função para zerar todos os atributos
 # -> Checar se existe Ctrl_Lyr e aplicar todos os controles nele.

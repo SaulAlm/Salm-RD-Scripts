@@ -1,7 +1,7 @@
 # This script will check and zero all defined Dp_Ar atributes and transformations. 
 # For Dp_Ar_control will copy originalRotate values to Rotate and zero some extra.
 
-# version 1.00 - 2022.08.10
+# version 1.01 - 2022.08.10
 
 """ Thanks for collaborators:
     | Danilo Pinheiro |
@@ -17,10 +17,12 @@ loadedModuleList = dir()
 print(loadedModuleList)
 
 def checkToPublish():
+    # List with all atributes to set zero values. 
     setZeroList = ['twist', 'outsideRoll','outsideSpin', 'insideRoll', 'insideSpin',
                    'heelRoll', 'heelSpin', 'toeRoll', 'toeSpin', 'ballRoll', 'ballTurn',
-                   'ballSpin', 'footRoll','sideRoll', 'baseTwist',
+                   'ballSpin', 'footRoll','sideRoll', 'baseTwist', 'phalange1', 'phalange2', 'phalange3',
                    'L_Puff', 'R_Puff', 'Pucker', 'BigSmile', 'AAA', 'OOO', 'UUU', 'FFF', 'MMM']
+    # List with all atributes to set one values.
     setOneList = ['stretchable', 'length', 'uniformScale', 'showControls', 'active',
                   'scaleCompensate', ]
     
